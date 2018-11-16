@@ -1,22 +1,14 @@
-# This project is no longer maintained
-
-As of November 7th, 2018, I've decided to end my commitment to maintaining this repo and related.
-
-It's been 3 years since I last used Elasticsearch, so I no longer have the motivation it takes to maintain and evolve this project. Also, other projects need all the attention I can give.
-
-It was a great run, **thank you all**.
-
 # docker-elasticsearch
 
 Ready to use, lean and highly configurable Elasticsearch container image.
 
-[![Docker Repository on Quay.io](https://quay.io/repository/pires/docker-elasticsearch/status "Docker Repository on Quay.io")](https://quay.io/repository/pires/docker-elasticsearch)
+[![Docker Repository on Quay](https://quay.io/repository/boostcom/docker-elasticsearch/status "Docker Repository on Quay")](https://quay.io/repository/boostcom/docker-elasticsearch)
 
 ## Current software
 
 * Alpine Linux 3.8
-* OpenJDK JRE 8u171
-* Elasticsearch 6.4.2
+* OpenJDK JRE 8u181
+* Elasticsearch 6.5.0
 
 **Note:** `x-pack-ml` module is forcibly disabled as it's not supported on Alpine Linux.
 
@@ -33,7 +25,7 @@ docker run --name elasticsearch \
 	--detach \
 	--privileged \
 	--volume /path/to/data_folder:/data \
-        quay.io/pires/docker-elasticsearch:6.4.2
+        quay.io/boostcom/docker-elasticsearch:6.5.0
 ```
 
 Ready to use node for cluster `myclustername`:
@@ -43,7 +35,7 @@ docker run --name elasticsearch \
 	--privileged \
 	--volume /path/to/data_folder:/data \
 	-e CLUSTER_NAME=myclustername \
-        quay.io/pires/docker-elasticsearch:6.4.2
+        quay.io/boostcom/docker-elasticsearch:6.5.0
 ```
 
 Ready to use node for cluster `elasticsearch-default`, with 8GB heap allocated to Elasticsearch:
@@ -53,7 +45,7 @@ docker run --name elasticsearch \
 	--privileged \
 	--volume /path/to/data_folder:/data \
 	-e ES_JAVA_OPTS="-Xms8g -Xmx8g" \
-        quay.io/pires/docker-elasticsearch:6.4.2
+        quay.io/boostcom/docker-elasticsearch:6.5.0
 ```
 
 Ready to use node with plugins (x-pack and repository-gcs) pre installed. Already installed plugins are ignored:
@@ -64,7 +56,7 @@ docker run --name elasticsearch \
 	--volume /path/to/data_folder:/data \
 	-e ES_JAVA_OPTS="-Xms8g -Xmx8g" \
 	-e ES_PLUGINS_INSTALL="repository-gcs,x-pack" \
-        quay.io/pires/docker-elasticsearch:6.4.2
+        quay.io/boostcom/docker-elasticsearch:6.5.0
 ```
 
 **Master-only** node for cluster `elasticsearch-default`:
@@ -75,7 +67,7 @@ docker run --name elasticsearch \
 	--volume /path/to/data_folder:/data \
 	-e NODE_DATA=false \
 	-e HTTP_ENABLE=false \
-        quay.io/pires/docker-elasticsearch:6.4.2
+        quay.io/boostcom/docker-elasticsearch:6.5.0
 ```
 
 **Data-only** node for cluster `elasticsearch-default`:
@@ -85,7 +77,7 @@ docker run --name elasticsearch \
 	--privileged \
 	-e NODE_MASTER=false \
 	-e HTTP_ENABLE=false \
-        quay.io/pires/docker-elasticsearch:6.4.2
+        quay.io/boostcom/docker-elasticsearch:6.5.0
 ```
 
 **Data-only** node for cluster `elasticsearch-default` with shard allocation awareness:
@@ -98,7 +90,7 @@ docker run --name elasticsearch \
 	-e HTTP_ENABLE=false \
     -e SHARD_ALLOCATION_AWARENESS=dockerhostname \
     -e SHARD_ALLOCATION_AWARENESS_ATTR="/dockerhost" \
-        quay.io/pires/docker-elasticsearch:6.4.2
+        quay.io/boostcom/docker-elasticsearch:6.5.0
 ```
 
 **Client-only** node for cluster `elasticsearch-default`:
@@ -109,9 +101,8 @@ docker run --name elasticsearch \
 	--volume /path/to/data_folder:/data \
 	-e NODE_MASTER=false \
 	-e NODE_DATA=false \
-        quay.io/pires/docker-elasticsearch:6.4.2
+        quay.io/boostcom/docker-elasticsearch:6.5.0
 ```
-I also make available special images and instructions for [AWS EC2](https://github.com/pires/docker-elasticsearch-aws) and [Kubernetes](https://github.com/pires/docker-elasticsearch-kubernetes).
 
 ### Environment variables
 
@@ -159,3 +150,7 @@ Now, you can take snapshots using:
 ```bash
 curl -f -XPUT "http://<container_ip>:9200/_snapshot/nas_repository/snapshot_`date --utc +%Y_%m_%dt%H_%M`?wait_for_completion=true"
 ```
+
+## Creator
+
+https://github.com/boostcom/docker-elasticsearch
