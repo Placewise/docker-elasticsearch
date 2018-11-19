@@ -153,4 +153,4 @@ curl -f -XPUT "http://<container_ip>:9200/_snapshot/nas_repository/snapshot_`dat
 
 ## Creator
 
-https://github.com/boostcom/docker-elasticsearch
+https://github.com/pires/docker-elasticsearch
