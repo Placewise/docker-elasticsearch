@@ -1,4 +1,4 @@
-FROM quay.io/boostcom/docker-jre:8u181
+FROM quay.io/boostcom/docker-jre:8u201
 LABEL maintainer="jakub.kruczek@boostcom.no"
 
 # Export HTTP & Transport

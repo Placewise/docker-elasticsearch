@@ -6,7 +6,7 @@ Ready to use, lean and highly configurable Elasticsearch container image.
 
 ## Current software
 
-* Alpine Linux 3.8
+* Alpine Linux 3.9
 * OpenJDK JRE 8u181
 * Elasticsearch 6.6.2
 
